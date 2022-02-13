@@ -49,7 +49,27 @@ add-apt-repository \
   stable"
 
 apt-get update && apt-get install docker-ce=18.06.2~ce~3-0~ubuntu -y #if this command did not work, run the below command
-sudo apt-get install docker-ce docker-ce-cli containerd.io
+                    OR
+                   
+# How To Install and Use Docker on Ubuntu 20.04 in AWS
+
+Provision 3 ubuntu 20.04 servers; open the following ports ssh=22, HTTP=80, HTTPS = 443, Custom TCP = 6443
+
+sudo apt update
+
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+
+apt-cache policy docker-ce
+
+sudo apt install docker-ce
+
+sudo systemctl status docker
+
+Then: ru the below
 
 cat > /etc/docker/daemon.json <<EOF
 {
